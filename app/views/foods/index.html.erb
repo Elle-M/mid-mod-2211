@@ -8,3 +8,16 @@ And for each of the foods I should see:
 - The food's description
 - The food's Brand Owner
 - The food's ingredients %>
+
+<h1>Search Results for <%= params[:q] %></h1>
+
+<p><%= pluralize(@foods.size, "food") %> found</p>
+
+<% @foods.each do |food| %>
+  <div class="food">
+    <h2><%= food.description %></h2>
+    <%# <p>GTIN/UPC: <%= food.gtin_upc %></p> %>
+    <p>Brand Owner: <%= food.brand_owner %></p>
+    <p>Ingredients: <%= food.ingredients %></p>
+  </div>
+<% end %>
