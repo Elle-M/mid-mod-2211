@@ -18,4 +18,16 @@ describe "Food Search" do
       expect(page).to have_css(".ingredients")
     end
   end
+
+  describe "sad path" do
+    it "returns an error message if no ingredient is entered" do
+      visit root_path
+
+      fill_in :search, with: ""
+      click_on "Search"
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content("Please enter an ingredient")
+    end
+  end
 end
